@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --input-bg: #2c2c2c;
+            --primary-color: #007bff;
+            --primary-hover: #0056b3;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .reset-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .reset-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        a {
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: none;
+        }
+
+        .error-text {
+            font-size: 0.8rem;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: 1px dashed #6c757d;
+            border-radius: 5px;
+            background-color: rgba(108, 117, 125, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-container animate__animated animate__fadeIn">
+        <h2 class="text-center mb-4">Password Reset</h2>
+        <div class="text-center mb-4">
+            <i class="fas fa-check-circle fa-3x text-success"></i>
+        </div>
+        <p class="text-center">You have been verified.</p>
+        <p class="text-center">Your account associated: <strong>{{ email }}</strong></p>
+        <p class="text-center">Your password has been reset to: <strong>'pass'</strong></p>
+        <p class="text-center error-text">{{ text }}</p>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('login') }}" class="btn btn-primary animate__animated animate__pulse">Go to Login</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

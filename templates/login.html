@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --input-bg: #2c2c2c;
+            --primary-color: #007bff;
+            --primary-hover: #0056b3;
+            --error-color: #dc3545;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-control {
+            background-color: var(--input-bg);
+            border: none;
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        a {
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: none;
+        }
+
+        .input-group-prepend .input-group-text {
+            background-color: var(--input-bg);
+            border: none;
+            color: var(--text-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-text {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 1rem;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container animate__animated animate__fadeIn">
+        <h2 class="text-center mb-4">Login</h2>
+        
+        {% if error %}
+            <div class="error-message text-center">
+                {{ error }}
+            </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </div>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+            </div>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block animate__animated animate__pulse">
+                Login
+            </button>
+        </form>
+        
+        <div class="login-options">
+            <a href="{{ url_for('signup') }}" class="animate__animated animate__fadeIn">Sign Up</a>
+            <a href="{{ url_for('forgot_password') }}" class="animate__animated animate__fadeIn">Forgot Password?</a>
+        </div>
+        
+        <hr>
+        
+        <div class="text-center feedback-text">
+            <p>Have feedback? Contact admin at <a href="mailto:admin171@gmail.com">admin171@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
